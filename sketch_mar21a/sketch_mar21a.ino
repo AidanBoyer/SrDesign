@@ -20,6 +20,8 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_180MS, TCS347
 // Variable and constant definitions
 int zeroSetJumperPin = 3;
 int resetIsPressed = 0;
+int rightMotorPowerSignalPin = 5;
+int leftMotorPowerSignalPin = 6;
 float rRaw, gRaw, bRaw;
 float rZero, gZero, bZero;
 float r, g, b;
@@ -31,9 +33,14 @@ float forwardRMaxRange = 20;
 float reverseRMaxRange = 20;
 float forwardSpeed;
 float turningRate;
+float rightMotorPower;
+float leftMotorPower;
+float turningSensitivity = 0.25;
 
 void setup(void) {
   pinMode(zeroSetJumperPin, INPUT);
+  //pinMode(rightMotorPowerSignalPin, OUTPUT);
+  //pinMode(leftMotorPowerSignalPin, OUTPUT);
 
   Serial.begin(9600);
 
@@ -95,5 +102,9 @@ void resetCenter(float rCenter, float gCenter, float bCenter) {
 }
 
 void transmitDrivingInstructions(float forward, float turning) {
-// empty
+  // This function assumes forwardSpeed and turningRate vary between -1 and 1
+  rightMotorPower = forwardSpeed - (turningRate * turningSensitivity);
+  leftMotorPower = forwardSpeed + (turningRate * turningSensitivity);
+  //analogWrite(128*(1+rightMotorPowerSignalPin), rightMotorPower);
+  //analogWrite(128*(1+leftMotorPowerSignalPin), leftMotorPower);
 }
