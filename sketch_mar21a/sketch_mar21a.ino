@@ -17,45 +17,83 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_180MS, TCS347
 //  TCS34725_GAIN_16X = 0x02, /**<  16x gain */
 //  TCS34725_GAIN_60X = 0x03  /**<  60x gain */
 
-zeroSetJumperPin = 3;
+// Variable and constant definitions
+int zeroSetJumperPin = 3;
+int resetIsPressed = 0;
+float rRaw, gRaw, bRaw;
+float rZero, gZero, bZero;
+float r, g, b;
+float gbDifference;
+float gbNeutralDifference;
+float gbDifferenceMax = 50;
+float gbDifferenceMin = 50;
+float forwardRMaxRange = 20;
+float reverseRMaxRange = 20;
+float forwardSpeed;
+float turningRate;
 
-void setup(void)
-{
+void setup(void) {
   pinMode(zeroSetJumperPin, INPUT);
 
   Serial.begin(9600);
 
   if (tcs.begin()) {
-    //Serial.println("Found sensor");
+    Serial.println("Found sensor");
   } else {
-    //Serial.println("No TCS34725 found ... check your connections");
+    Serial.println("No TCS34725 found ... check your connections");
     while (1);
   }
-  tcs.setInterrupt(false);  // turn on LED
-  //tcs.setInterrupt(true); // turn off LED
+  //tcs.setInterrupt(false);  // turn on LED
+  tcs.setInterrupt(true); // turn off LED
 
+  delay(1000);
+  tcs.getRGB(&rRaw, &gRaw, &bRaw); // read RGB values from the color sensor
+  resetCenter(rRaw, gRaw, bRaw);
 }
 
-void loop(void)
-{
-  analogWrite(3, 255);
-  float r, g, b;
+void loop(void) {
+  tcs.getRGB(&rRaw, &gRaw, &bRaw); // read RGB values from the color sensor
 
-  tcs.getRGB(&r, &g, &b);
-  // colorTemp = tcs.calculateColorTemperature(r, g, b);
-  //colorTemp = tcs.calculateColorTemperature_dn40(r, g, b, c);
-  //lux = tcs.calculateLux(r, g, b);
+  resetIsPressed = digitalRead(zeroSetJumperPin);
+  if (resetIsPressed) {resetCenter(rRaw, gRaw, bRaw);}
 
-  //Serial.print("Color Temp: "); Serial.print(colorTemp, DEC); Serial.print(" K - ");
-  //Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" - ");
-  Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
-  Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
-  Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
-  //Serial.print("C: "); Serial.print(c, DEC); Serial.print(" ");
+  r = rRaw - rZero;
+  g = gRaw - gZero;
+  b = bRaw - bZero;
+  gbDifference = gRaw - bRaw;
+  
+  if (r > 0) {
+    forwardSpeed = (-r)/(forwardRMaxRange);
+  }
+  else {
+    forwardSpeed = (-r)/(reverseRMaxRange);
+  }
+
+  if ((gbDifference - gbNeutralDifference) > 0) {
+    turningRate = (gbDifference - gbNeutralDifference)/(gbDifferenceMax);
+  }
+  else {
+    turningRate = (gbDifference - gbNeutralDifference)/(gbDifferenceMin);
+  }
+
+  //Serial.print("R: "); Serial.print(rRaw, DEC); Serial.print(" ");
+  //Serial.print("G: "); Serial.print(gRaw, DEC); Serial.print(" ");
+  //Serial.print("B: "); Serial.print(bRaw, DEC); Serial.print(" ");
+  Serial.print("Forward: "); Serial.print(forwardSpeed, DEC); Serial.print(" ");
+  Serial.print("Turning: "); Serial.print(turningRate, DEC); Serial.print(" ");
   Serial.println(" ");
+  
+
+  //transmitDrivingInstructions(forwardSpeed, turningRate);
 }
 
-void resetCenter()
-{
+void resetCenter(float rCenter, float gCenter, float bCenter) {
+  rZero = rCenter;
+  gZero = gCenter;
+  bZero = bCenter;
+  gbNeutralDifference = gZero - bZero;
+}
 
+void transmitDrivingInstructions(float forward, float turning) {
+// empty
 }
