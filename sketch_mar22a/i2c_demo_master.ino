@@ -37,11 +37,8 @@ void loop()
   }
 
   Wire.beginTransmission( slaveAddress ); // transmit to device #9
-
   Wire.write(x); // sends x
-
   Wire.endTransmission(); // stop transmitting
-
   delay(200);
 
 }
