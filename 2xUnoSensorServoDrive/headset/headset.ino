@@ -53,10 +53,11 @@ void loop() {
     resetCenter(rRaw, gRaw, bRaw);
   }
 
-  static float r = rRaw - rZero;
-  static float g = gRaw - gZero;
-  static float b = bRaw - bZero;
-  static float gbDifference = gRaw - bRaw;
+  static float r, g, b;
+  r = rRaw - rZero;
+  g = gRaw - gZero;
+  b = bRaw - bZero;
+  float gbDifference = gRaw - bRaw;
 
   float forwardSpeed;
 
@@ -76,9 +77,9 @@ void loop() {
     turningRate = (gbDifference - gbNeutralDifference) / (gbDifferenceMin);
   }
 
-  //Serial.print("R: "); Serial.print(rRaw, DEC); Serial.print(" ");
-  //Serial.print("G: "); Serial.print(gRaw, DEC); Serial.print(" ");
-  //Serial.print("B: "); Serial.print(bRaw, DEC); Serial.print(" ");
+  Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
+  Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
+  Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
   Serial.print("Forward: "); Serial.print(forwardSpeed, DEC); Serial.print(" ");
   Serial.print("Turning: "); Serial.print(turningRate, DEC); Serial.print(" ");
   Serial.println(" ");
@@ -93,8 +94,10 @@ void loop() {
 
   const float turningSensitivity = 0.25;
 
-  static float rightMotorPower = forwardSpeed - (turningRate * turningSensitivity);
-  static float leftMotorPower = forwardSpeed + (turningRate * turningSensitivity);
+  static float rightMotorPower;
+  static float leftMotorPower;
+  rightMotorPower = forwardSpeed - (turningRate * turningSensitivity);
+  leftMotorPower = forwardSpeed + (turningRate * turningSensitivity);
 
   const int servoTopSpeed = 100; // I believe true max speed is 200
   transmitMotorSpeeds(rightMotorPower*servoTopSpeed, leftMotorPower*servoTopSpeed);
