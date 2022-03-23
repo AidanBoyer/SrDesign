@@ -11,7 +11,8 @@
 
 
 #include <Wire.h>
-char outputString[3];
+char outputString[4];
+
 void setup()
 {
   Wire.begin(); // join i2c bus (address optional for master)
@@ -22,10 +23,10 @@ float x = 0;
 void loop()
 {
   Wire.beginTransmission(4); // transmit to device #4
-  String(outputString);
+  dtostrf(x,4,0,outputString);
   Wire.write(outputString);              // sends one byte  
   Wire.endTransmission();    // stop transmitting
 
-  x=x+1;
-  delay(500);
+  x=x-1;
+  delay(10);
 }

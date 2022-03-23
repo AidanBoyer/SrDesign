@@ -37,9 +37,9 @@ void receiveEvent(int howMany)
     receivedString = receivedString + c;
   }
   
-  outputFloat = receivedString.toInt();
-  servoValue = 1500 + outputFloat;
+  outputInteger = receivedString.toInt();
+  servoValue = 1500 + outputInteger;
   Serial.println(servoValue);
 
-  delay(1000);
+  //delay(1000);
 }
