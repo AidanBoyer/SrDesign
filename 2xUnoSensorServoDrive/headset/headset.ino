@@ -1,6 +1,11 @@
 #include <Wire.h>
 #include "Adafruit_TCS34725.h"
 
+/* Connect SCL    to analog 5
+   Connect SDA    to analog 4
+   Connect VDD    to 3.3V DC
+   Connect GROUND to common ground */
+
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_180MS, TCS34725_GAIN_60X);
 
 //  TCS34725_GAIN_1X = 0x00,  /**<  No gain  */
@@ -78,8 +83,21 @@ void loop() {
   Serial.print("Turning: "); Serial.print(turningRate, DEC); Serial.print(" ");
   Serial.println(" ");
 
+  /* Clip forwardSpeed and turningRate to vary between -1 and 1. To minimize this
+  effect, forwardRMaxRange, reverseRMaxRange, gbDifferenceMax, and gbDifferenceMin
+  should be adjusted */
+  if (forwardSpeed > 1) {forwardSpeed = 1;}
+  else if (forwardSpeed < -1) {forwardSpeed = -1;}
+  if (turningRate > 1) {turningRate = 1;}
+  else if (turningRate < -1) {turningRate = -1;}
 
-  //transmitDrivingInstructions(forwardSpeed, turningRate);
+  const float turningSensitivity = 0.25;
+
+  static float rightMotorPower = forwardSpeed - (turningRate * turningSensitivity);
+  static float leftMotorPower = forwardSpeed + (turningRate * turningSensitivity);
+
+  const int servoTopSpeed = 100; // I believe true max speed is 200
+  transmitMotorSpeeds(rightMotorPower*servoTopSpeed, leftMotorPower*servoTopSpeed);
 }
 
 void transmitMotorSpeeds(int right, int left) {
@@ -108,17 +126,4 @@ void resetCenter(float rCenter, float gCenter, float bCenter) {
   gZero = gCenter;
   bZero = bCenter;
   gbNeutralDifference = gZero - bZero;
-}
-
-void transmitDrivingInstructions(float forward, float turning) {
-  // This function assumes forwardSpeed and turningRate vary between -1 and 1
-  const float turningSensitivity = 0.25;
-  
-  int rightMotorPowerSignalPin = 5;
-  int leftMotorPowerSignalPin = 6;
-
-  static float rightMotorPower = forward - (turning * turningSensitivity);
-  static float leftMotorPower = forward + (turning * turningSensitivity);
-  //analogWrite(128*(1+rightMotorPowerSignalPin), rightMotorPower);
-  //analogWrite(128*(1+leftMotorPowerSignalPin), leftMotorPower);
 }

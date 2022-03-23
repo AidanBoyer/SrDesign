@@ -53,13 +53,13 @@ void receiveEvent(int howMany) {
   rightServoValue = 1500 + firstOutputInt;
   leftServoValue = 1500 + secondOutputInt;
 
+  servoRight.writeMicroseconds(rightServoValue);
+  servoLeft.writeMicroseconds(leftServoValue);
+  
   Serial.print(rightServoValue, DEC);
   Serial.print(",");
   Serial.print(leftServoValue, DEC);
   Serial.println(" ");
-
-  servoRight.writeMicroseconds(rightServoValue);
-  servoLeft.writeMicroseconds(leftServoValue);
 
   //delay(1000);
 }
