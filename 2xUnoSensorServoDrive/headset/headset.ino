@@ -8,24 +8,9 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_180MS, TCS347
 //  TCS34725_GAIN_16X = 0x02, /**<  16x gain */
 //  TCS34725_GAIN_60X = 0x03  /**<  60x gain */
 
-int zeroSetJumperPin = 3;
-int resetIsPressed = 0;
-int rightMotorPowerSignalPin = 5;
-int leftMotorPowerSignalPin = 6;
-float rRaw, gRaw, bRaw;
+const int zeroSetJumperPin = 3; // global on purpose
 float rZero, gZero, bZero;
-float r, g, b;
-float gbDifference;
 float gbNeutralDifference;
-float gbDifferenceMax = 50;
-float gbDifferenceMin = 50;
-float forwardRMaxRange = 20;
-float reverseRMaxRange = 20;
-float forwardSpeed;
-float turningRate;
-float rightMotorPower;
-float leftMotorPower;
-float turningSensitivity = 0.25;
 
 void setup() {
   Wire.begin(); // join i2c bus (address optional for master)
@@ -42,34 +27,48 @@ void setup() {
   tcs.setInterrupt(true); // turn off LED - set to false to turn on LED
 
   delay(1000);
-  
+
+  float rRaw, gRaw, bRaw;
   tcs.getRGB(&rRaw, &gRaw, &bRaw); // read RGB values from the color sensor
   resetCenter(rRaw, gRaw, bRaw);
 }
 
 void loop() {
+  const float gbDifferenceMax = 50;
+  const float gbDifferenceMin = 50;
+  const float forwardRMaxRange = 20;
+  const float reverseRMaxRange = 20;
+
+  static float rRaw, gRaw, bRaw;
   tcs.getRGB(&rRaw, &gRaw, &bRaw); // read RGB values from the color sensor
 
+  bool resetIsPressed = 0;
   resetIsPressed = digitalRead(zeroSetJumperPin);
-  if (resetIsPressed) {resetCenter(rRaw, gRaw, bRaw);}
+  if (resetIsPressed) {
+    resetCenter(rRaw, gRaw, bRaw);
+  }
 
-  r = rRaw - rZero;
-  g = gRaw - gZero;
-  b = bRaw - bZero;
-  gbDifference = gRaw - bRaw;
-  
+  static float r = rRaw - rZero;
+  static float g = gRaw - gZero;
+  static float b = bRaw - bZero;
+  static float gbDifference = gRaw - bRaw;
+
+  float forwardSpeed;
+
   if (r > 0) {
-    forwardSpeed = (-r)/(forwardRMaxRange);
+    forwardSpeed = (-r) / (forwardRMaxRange);
   }
   else {
-    forwardSpeed = (-r)/(reverseRMaxRange);
+    forwardSpeed = (-r) / (reverseRMaxRange);
   }
+
+  float turningRate;
 
   if ((gbDifference - gbNeutralDifference) > 0) {
-    turningRate = (gbDifference - gbNeutralDifference)/(gbDifferenceMax);
+    turningRate = (gbDifference - gbNeutralDifference) / (gbDifferenceMax);
   }
   else {
-    turningRate = (gbDifference - gbNeutralDifference)/(gbDifferenceMin);
+    turningRate = (gbDifference - gbNeutralDifference) / (gbDifferenceMin);
   }
 
   //Serial.print("R: "); Serial.print(rRaw, DEC); Serial.print(" ");
@@ -78,7 +77,7 @@ void loop() {
   Serial.print("Forward: "); Serial.print(forwardSpeed, DEC); Serial.print(" ");
   Serial.print("Turning: "); Serial.print(turningRate, DEC); Serial.print(" ");
   Serial.println(" ");
-  
+
 
   //transmitDrivingInstructions(forwardSpeed, turningRate);
 }
@@ -96,8 +95,8 @@ void transmitMotorSpeeds(int right, int left) {
   rightString = String(right);
   leftString = String(left);
   outputString = rightString + ',' + leftString;
-  outputString.toCharArray(outputArray,9);
-  
+  outputString.toCharArray(outputArray, 9);
+
   Wire.write(outputArray);
   Wire.endTransmission();    // stop transmitting
 
@@ -113,8 +112,13 @@ void resetCenter(float rCenter, float gCenter, float bCenter) {
 
 void transmitDrivingInstructions(float forward, float turning) {
   // This function assumes forwardSpeed and turningRate vary between -1 and 1
-  rightMotorPower = forwardSpeed - (turningRate * turningSensitivity);
-  leftMotorPower = forwardSpeed + (turningRate * turningSensitivity);
+  const float turningSensitivity = 0.25;
+  
+  int rightMotorPowerSignalPin = 5;
+  int leftMotorPowerSignalPin = 6;
+
+  static float rightMotorPower = forward - (turning * turningSensitivity);
+  static float leftMotorPower = forward + (turning * turningSensitivity);
   //analogWrite(128*(1+rightMotorPowerSignalPin), rightMotorPower);
   //analogWrite(128*(1+leftMotorPowerSignalPin), leftMotorPower);
 }
