@@ -20,7 +20,7 @@ void setup() {
 }
 
 void loop() {
-  delay(100);
+  //delay(100);
 }
 
 // function that executes whenever data is received from master
@@ -29,8 +29,8 @@ void receiveEvent(int howMany) {
   String firstReceivedString = "";
   String secondReceivedString = "";
   bool delineatorFound = false;
-  int firstOutputInt;
-  int secondOutputInt;
+  static int firstOutputInt;
+  static int secondOutputInt;
 
   while (Wire.available()) {
     char c = Wire.read();
