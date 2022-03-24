@@ -4,7 +4,7 @@
 Servo servoRight;
 Servo servoLeft;
 
-int rightServoValue = 1500;
+int rightServoValue = 1500; // 1500 corresponds to neutral stationary
 int leftServoValue = 1500;
 
 void setup() {
