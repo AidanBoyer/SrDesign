@@ -50,7 +50,7 @@ void receiveEvent(int howMany) {
   firstOutputInt = firstReceivedString.toInt();
   secondOutputInt = secondReceivedString.toInt();
 
-  rightServoValue = 1500 + firstOutputInt;
+  rightServoValue = 1500 - firstOutputInt;
   leftServoValue = 1500 + secondOutputInt;
 
   servoRight.writeMicroseconds(rightServoValue);

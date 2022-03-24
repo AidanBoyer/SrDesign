@@ -39,47 +39,59 @@ void setup() {
 }
 
 void loop() {
-  const float gbDifferenceMax = 50;
-  const float gbDifferenceMin = 50;
-  const float forwardRMaxRange = 20;
-  const float reverseRMaxRange = 20;
+  const int gbDifferenceMax = 50;
+  const int gbDifferenceMin = 50;
+  const int forwardRMaxRange = 30;
+  const int reverseRMaxRange = 30;
+  const int luminanceCutoff = 30;
+  const int rDeadZone = 5;
+  const int gbDeadZone = 5;
 
   static float rRaw, gRaw, bRaw;
   tcs.getRGB(&rRaw, &gRaw, &bRaw); // read RGB values from the color sensor
 
+  // If the reset pin is powered, set the RGB zero values to the last read values
   bool resetIsPressed = 0;
   resetIsPressed = digitalRead(zeroSetJumperPin);
   if (resetIsPressed) {
     resetCenter(rRaw, gRaw, bRaw);
   }
 
-  static float r, g, b;
+  // r, g, and b are the difference between currently read value and the zero values
+  static float r, g, b, lux;
   r = rRaw - rZero;
   g = gRaw - gZero;
   b = bRaw - bZero;
   float gbDifference = gRaw - bRaw;
+  lux = tcs.calculateLux(rRaw, gRaw, bRaw);
 
-  float forwardSpeed;
+  // If the luminance is below the threshold, reset zero position
+  /*if (lux < luminanceCutoff) {
+    resetCenter(rRaw, gRaw, bRaw);
+  }*/
+  
+  float forwardSpeed = 0;
 
-  if (r > 0) {
-    forwardSpeed = (-r) / (forwardRMaxRange);
+  if (r > rDeadZone) {
+    forwardSpeed = ((-1)*(r-rDeadZone)) / (forwardRMaxRange);
   }
-  else {
-    forwardSpeed = (-r) / (reverseRMaxRange);
+  else if (r < (-1*rDeadZone)) {
+    forwardSpeed = ((-1)*(r+rDeadZone)) / (reverseRMaxRange);
   }
 
-  float turningRate;
+  float turningRate = 0;
 
-  if ((gbDifference - gbNeutralDifference) > 0) {
-    turningRate = (gbDifference - gbNeutralDifference) / (gbDifferenceMax);
+  if ((gbDifference - gbNeutralDifference) > gbDeadZone) {
+    turningRate = ((gbDifference - gbNeutralDifference)-gbDeadZone) / (gbDifferenceMax);
   }
-  else {
-    turningRate = (gbDifference - gbNeutralDifference) / (gbDifferenceMin);
+  else if ((gbDifference - gbNeutralDifference) < (-1*gbDeadZone)){
+    turningRate = ((gbDifference - gbNeutralDifference)+gbDeadZone) / (gbDifferenceMin);
   }
 
   Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
   Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
   Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
+  Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" - ");
   Serial.print("Forward: "); Serial.print(forwardSpeed, DEC); Serial.print(" ");
   Serial.print("Turning: "); Serial.print(turningRate, DEC); Serial.print(" ");
   Serial.println(" ");
@@ -92,7 +104,7 @@ void loop() {
   if (turningRate > 1) {turningRate = 1;}
   else if (turningRate < -1) {turningRate = -1;}
 
-  const float turningSensitivity = 0.25;
+  const float turningSensitivity = 0.50;
 
   static float rightMotorPower;
   static float leftMotorPower;
