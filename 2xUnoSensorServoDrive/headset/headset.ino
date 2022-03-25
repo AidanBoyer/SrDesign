@@ -91,7 +91,7 @@ void loop() {
   Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
   Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
   Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
-  Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" - ");
+  Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" ");
   Serial.print("Forward: "); Serial.print(forwardSpeed, DEC); Serial.print(" ");
   Serial.print("Turning: "); Serial.print(turningRate, DEC); Serial.print(" ");
   Serial.println(" ");
