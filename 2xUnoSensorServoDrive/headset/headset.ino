@@ -1,12 +1,12 @@
-#include <Wire.h>
-#include "Adafruit_TCS34725.h"
+#include <Wire.h> // include I2C communication library
+#include "Adafruit_TCS34725.h" // include color sensor library
 
 /* Connect SCL    to analog 5
    Connect SDA    to analog 4
    Connect VDD    to 3.3V DC
    Connect GROUND to common ground */
 
-Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_180MS, TCS34725_GAIN_60X); // Initialize color sensor, set integration time and gain value
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_120MS, TCS34725_GAIN_60X); // Initialize color sensor, set integration time and gain value
 
 //  TCS34725_GAIN_1X = 0x00,  /**<  No gain  */
 //  TCS34725_GAIN_4X = 0x01,  /**<  4x gain  */
@@ -19,6 +19,7 @@ float gbNeutralDifference;
 
 void setup() {
   Wire.begin(); // join i2c bus (address optional for master)
+  //Wire.setClock(10000);
   pinMode(zeroSetJumperPin, INPUT);
   Serial.begin(9600);
 
@@ -39,13 +40,13 @@ void setup() {
 }
 
 void loop() {
-  const int gbDifferenceMax = 50; // (green-blue) value range in the positive direction that corresponds to full turning right
-  const int gbDifferenceMin = 30; // (green-blue) value range in the negative direction that corresponds to full turning left
-  const int forwardRMaxRange = 30; // maximum positive red value that corresponds to full forward
-  const int reverseRMaxRange = 30; // maximum negative red value that corresponds to full reverse
+  const int gbDifferenceMax = 30; // (green-blue) value range in the positive direction that corresponds to full turning right
+  const int gbDifferenceMin = 20; // (green-blue) value range in the negative direction that corresponds to full turning left
+  const int forwardRMaxRange = 25; // maximum positive red value that corresponds to full forward
+  const int reverseRMaxRange = 10; // maximum negative red value that corresponds to full reverse
   const int luminanceCutoff = 30; // luminance value below which the motors shut down
-  const int rDeadZone = 4; // width of the dead zone for the red value
-  const int gbDeadZone = 6; // width of the dead zone for the (green-blue) value
+  const int rDeadZone = 8; // width of the dead zone for the red value
+  const int gbDeadZone = 5; // width of the dead zone for the (green-blue) value
 
   static float rRaw, gRaw, bRaw;
   tcs.getRGB(&rRaw, &gRaw, &bRaw); // read RGB values from the color sensor
@@ -65,18 +66,20 @@ void loop() {
   float gbDifference = gRaw - bRaw;
   lux = tcs.calculateLux(rRaw, gRaw, bRaw); // calculates luminance
 
-  // If the luminance is below the threshold, reset zero position
+  // If the luminance is below the threshold, reset zero position, effectively shutting down motors
   /*if (lux < luminanceCutoff) {
     resetCenter(rRaw, gRaw, bRaw);
-  }*/
-  
+    }*/
+
   float forwardSpeed = 0;
 
   if (r > rDeadZone) { // if the r value is outside of the dead zone in the positive direction
-    forwardSpeed = ((-1)*(r-rDeadZone)) / (forwardRMaxRange);
+    forwardSpeed = ((-1) * (r - rDeadZone)) / (forwardRMaxRange);
+    //forwardSpeed = ((-1)*(r)) / (forwardRMaxRange);
   }
-  else if (r < (-1*rDeadZone)) { // if the r value is outside of the dead zone in the negative direction
-    forwardSpeed = ((-1)*(r+rDeadZone)) / (reverseRMaxRange);
+  else if (r < (-1 * rDeadZone)) { // if the r value is outside of the dead zone in the negative direction
+    forwardSpeed = ((-1) * (r + rDeadZone)) / (reverseRMaxRange);
+    //forwardSpeed = ((-1)*(r)) / (reverseRMaxRange);
   }
   // note that negative r corresponds to forward movement
 
@@ -84,39 +87,54 @@ void loop() {
 
   if ((gbDifference - gbNeutralDifference) > gbDeadZone) {
     // if the difference between the current (green-blue) value and the zero (green-blue) value is outside of the (green-blue) dead zone in the positive direction
-    turningRate = ((gbDifference - gbNeutralDifference)-gbDeadZone) / (gbDifferenceMax);
+    turningRate = ((gbDifference - gbNeutralDifference) - gbDeadZone) / (gbDifferenceMax);
   }
-  else if ((gbDifference - gbNeutralDifference) < (-1*gbDeadZone)){
+  else if ((gbDifference - gbNeutralDifference) < (-1 * gbDeadZone)) {
     // if the difference between the current (green-blue) value and the zero (green-blue) value is outside of the (green-blue) dead zone in the negative direction
-    turningRate = ((gbDifference - gbNeutralDifference)+gbDeadZone) / (gbDifferenceMin);
+    turningRate = ((gbDifference - gbNeutralDifference) + gbDeadZone) / (gbDifferenceMin);
   }
 
   // print the current r,g,b,lux, calculated forward speed and calculated turning rate to the USB serial monitor
-  Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
-  Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
-  Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
-  Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" ");
-  Serial.print("Forward: "); Serial.print(forwardSpeed, DEC); Serial.print(" ");
-  Serial.print("Turning: "); Serial.print(turningRate, DEC); Serial.print(" ");
+  //Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
+  //Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
+  //Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
+  //Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" ");
+  Serial.print("Forward: "); Serial.print(10 * forwardSpeed, DEC); Serial.print(" ");
+  Serial.print("Turning: "); Serial.print(10 * turningRate, DEC); Serial.print(" ");
   Serial.println(" ");
 
   // Clip forwardSpeed and turningRate to vary between -1 and 1. To minimize this
   // effect, forwardRMaxRange, reverseRMaxRange, gbDifferenceMax, and gbDifferenceMin should be adjusted
-  if (forwardSpeed > 1) {forwardSpeed = 1;}
-  else if (forwardSpeed < -1) {forwardSpeed = -1;}
-  if (turningRate > 1) {turningRate = 1;}
-  else if (turningRate < -1) {turningRate = -1;}
+  if (forwardSpeed > 1) {
+    forwardSpeed = 1;
+  }
+  else if (forwardSpeed < -1) {
+    forwardSpeed = -1;
+  }
+  if (turningRate > 1) {
+    turningRate = 1;
+  }
+  else if (turningRate < -1) {
+    turningRate = -1;
+  }
 
-  const float turningSensitivity = 0.50; // adjust this value to set how turning aggressiveness
+  const float turningSensitivity = 0.25; // adjust this value to set how turning aggressiveness
+  const float inPlaceTurningSensitivity = 0.5;
 
   static float rightMotorPower;
   static float leftMotorPower;
   // translates forwardSpeed and turningRate into right and left motor power values, assuming a skid-steer or tank drive system
-  rightMotorPower = forwardSpeed - (turningRate * turningSensitivity);
-  leftMotorPower = forwardSpeed + (turningRate * turningSensitivity);
+  if (forwardSpeed == 0) {
+    rightMotorPower = (-1)*(turningRate * inPlaceTurningSensitivity);
+    leftMotorPower = turningRate * inPlaceTurningSensitivity;
+  }
+  else {
+    rightMotorPower = forwardSpeed - (turningRate * turningSensitivity);
+    leftMotorPower = forwardSpeed + (turningRate * turningSensitivity);
+  }
 
   const int servoTopSpeed = 100; // Sets the servo speed value that corresponds to 1 or maximum (full power is 200)
-  transmitMotorSpeeds(rightMotorPower*servoTopSpeed, leftMotorPower*servoTopSpeed); // passes the scaled right and left motor power values to the rover arduino
+  transmitMotorSpeeds(rightMotorPower * servoTopSpeed, leftMotorPower * servoTopSpeed); // passes the scaled right and left motor power values to the rover arduino
 }
 
 void transmitMotorSpeeds(int right, int left) {
@@ -125,7 +143,7 @@ void transmitMotorSpeeds(int right, int left) {
   static String rightString;
   static String leftString;
   static String outputString;
-  static char outputArray[9]; // 9 characters to allow for signed 3-digit motor power values and a delineator character
+  static char outputArray[9]; // 9 characters to allow for 2 signed 3-digit motor power values and 1 delineator character
 
   //dtostrf(right, 4, 0, rightString);
   //dtostrf(left, 4, 0, leftString);
