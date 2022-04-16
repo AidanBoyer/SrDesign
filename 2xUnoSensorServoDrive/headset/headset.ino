@@ -6,7 +6,7 @@
    Connect VDD    to 3.3V DC
    Connect GROUND to common ground */
 
-Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_120MS, TCS34725_GAIN_60X); // Initialize color sensor, set integration time and gain value
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_180MS, TCS34725_GAIN_60X); // Initialize color sensor, set integration time and gain value
 
 //  TCS34725_GAIN_1X = 0x00,  /**<  No gain  */
 //  TCS34725_GAIN_4X = 0x01,  /**<  4x gain  */
