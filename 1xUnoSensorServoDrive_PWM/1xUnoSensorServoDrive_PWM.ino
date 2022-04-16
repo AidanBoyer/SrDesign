@@ -156,32 +156,7 @@ void loop() {
 
   servoRight.writeMicroseconds(rightServoValue);
   servoLeft.writeMicroseconds(leftServoValue);
-  
-  //transmitMotorSpeeds(rightMotorPower * servoTopSpeed, leftMotorPower * servoTopSpeed); // passes the scaled right and left motor power values to the rover arduino
 }
-
-/*
-void transmitMotorSpeeds(int right, int left) {
-  Wire.beginTransmission(4); // transmit to device address 4 (rover arduino I2C is initialized as address 4)
-
-  static String rightString;
-  static String leftString;
-  static String outputString;
-  static char outputArray[9]; // 9 characters to allow for 2 signed 3-digit motor power values and 1 delineator character
-
-  //dtostrf(right, 4, 0, rightString);
-  //dtostrf(left, 4, 0, leftString);
-  rightString = String(right); // convert the right and left motor power values to a string datatype
-  leftString = String(left);
-  outputString = rightString + ',' + leftString; // concatenates the two motor power values with a comma as a delineator
-  outputString.toCharArray(outputArray, 9); // converts this string to a character array with 9 elements
-
-  Wire.write(outputArray); // transmit the output character array over the I2C bus
-  Wire.endTransmission(); // close the I2C bus
-
-  //delay(10);
-}
-*/
 
 void resetCenter(float rCenter, float gCenter, float bCenter) {
   rZero = rCenter;
