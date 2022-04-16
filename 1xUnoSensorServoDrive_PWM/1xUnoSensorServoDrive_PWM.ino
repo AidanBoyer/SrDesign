@@ -10,7 +10,7 @@
 Servo servoRight;
 Servo servoLeft;
 
-Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_120MS, TCS34725_GAIN_60X); // Initialize color sensor, set integration time and gain value
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_60MS, TCS34725_GAIN_60X); // Initialize color sensor, set integration time and gain value
 
 //  TCS34725_GAIN_1X = 0x00,  /**<  No gain  */
 //  TCS34725_GAIN_4X = 0x01,  /**<  4x gain  */
@@ -36,9 +36,9 @@ void setup() {
 
   tcs.setInterrupt(true); // turn off LED - set to false to turn on LED
 
-  servoRight.attach(12);
+  servoRight.attach(10);
   servoRight.writeMicroseconds(1500);
-  servoLeft.attach(13);
+  servoLeft.attach(11);
   servoLeft.writeMicroseconds(1500);
   
   delay(1000);
@@ -49,13 +49,13 @@ void setup() {
 }
 
 void loop() {
-  const int gbDifferenceMax = 30; // (green-blue) value range in the positive direction that corresponds to full turning right
-  const int gbDifferenceMin = 20; // (green-blue) value range in the negative direction that corresponds to full turning left
-  const int forwardRMaxRange = 25; // maximum positive red value that corresponds to full forward
+  const int gbDifferenceMax = 4; // (green-blue) value range in the positive direction that corresponds to full turning right
+  const int gbDifferenceMin = 3; // (green-blue) value range in the negative direction that corresponds to full turning left
+  const int forwardRMaxRange = 15; // maximum positive red value that corresponds to full forward
   const int reverseRMaxRange = 10; // maximum negative red value that corresponds to full reverse
-  const int luminanceCutoff = 30; // luminance value below which the motors shut down
-  const int rDeadZone = 8; // width of the dead zone for the red value
-  const int gbDeadZone = 5; // width of the dead zone for the (green-blue) value
+  const int luminanceCutoff = 15; // luminance value below which the motors shut down
+  const int rDeadZone = 4; // width of the dead zone for the red value
+  const int gbDeadZone = 2; // width of the dead zone for the (green-blue) value
 
   static float rRaw, gRaw, bRaw;
   tcs.getRGB(&rRaw, &gRaw, &bRaw); // read RGB values from the color sensor
@@ -77,17 +77,21 @@ void loop() {
 
   // If the luminance is below the threshold, reset zero position, effectively shutting down motors
   /*if (lux < luminanceCutoff) {
-    resetCenter(rRaw, gRaw, bRaw);
-    }*/
+    servoRight.writeMicroseconds(1500); // if the lumanance cutoff is reached, cut off the servos
+    servoLeft.writeMicroseconds(1500);
+    delay(1500); // wait 1.5 seconds
+    tcs.getRGB(&rRaw, &gRaw, &bRaw);
+    resetCenter(rRaw, gRaw, bRaw); // reset the zero point with the just-measured values
+  }*/
 
   float forwardSpeed = 0;
 
   if (r > rDeadZone) { // if the r value is outside of the dead zone in the positive direction
-    forwardSpeed = ((-1) * (r - rDeadZone)) / (forwardRMaxRange);
+    forwardSpeed = ((-1) * (r - rDeadZone)) / (reverseRMaxRange);
     //forwardSpeed = ((-1)*(r)) / (forwardRMaxRange);
   }
   else if (r < (-1 * rDeadZone)) { // if the r value is outside of the dead zone in the negative direction
-    forwardSpeed = ((-1) * (r + rDeadZone)) / (reverseRMaxRange);
+    forwardSpeed = ((-1) * (r + rDeadZone)) / (forwardRMaxRange);
     //forwardSpeed = ((-1)*(r)) / (reverseRMaxRange);
   }
   // note that negative r corresponds to forward movement
@@ -104,12 +108,12 @@ void loop() {
   }
 
   // print the current r,g,b,lux, calculated forward speed and calculated turning rate to the USB serial monitor
-  //Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
-  //Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
+  Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
+  Serial.print("GB: "); Serial.print(g-b, DEC); Serial.print(" ");
   //Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
-  //Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" ");
-  Serial.print("Forward: "); Serial.print(10 * forwardSpeed, DEC); Serial.print(" ");
-  Serial.print("Turning: "); Serial.print(10 * turningRate, DEC); Serial.print(" ");
+  Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" ");
+  Serial.print("Forward: "); Serial.print(forwardSpeed, DEC); Serial.print(" ");
+  Serial.print("Turning: "); Serial.print(turningRate, DEC); Serial.print(" ");
   Serial.println(" ");
 
   // Clip forwardSpeed and turningRate to vary between -1 and 1. To minimize this
@@ -127,19 +131,19 @@ void loop() {
     turningRate = -1;
   }
 
-  const float turningSensitivity = 0.25; // adjust this value to set how turning aggressiveness
+  const float turningSensitivity = 0.4; // adjust this value to set how turning aggressiveness
   const float inPlaceTurningSensitivity = 0.5;
 
   static float rightMotorPower;
   static float leftMotorPower;
   // translates forwardSpeed and turningRate into right and left motor power values, assuming a skid-steer or tank drive system
   if (forwardSpeed == 0) {
-    rightMotorPower = (-1)*(turningRate * inPlaceTurningSensitivity);
-    leftMotorPower = turningRate * inPlaceTurningSensitivity;
+    rightMotorPower = turningRate * inPlaceTurningSensitivity;
+    leftMotorPower = (-1)*(turningRate * inPlaceTurningSensitivity);
   }
   else {
-    rightMotorPower = forwardSpeed - (turningRate * turningSensitivity);
-    leftMotorPower = forwardSpeed + (turningRate * turningSensitivity);
+    rightMotorPower = forwardSpeed + (turningRate * turningSensitivity);
+    leftMotorPower = forwardSpeed - (turningRate * turningSensitivity);
   }
 
   const int servoTopSpeed = 100; // Sets the servo speed value that corresponds to 1 or maximum (full power is 200)
