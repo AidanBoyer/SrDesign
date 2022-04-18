@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-18T17:22:25.220Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="nZ4jkbC7iMmCj8WJ3n-q" version="17.4.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-18T17:28:09.154Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="V8_7twYPuhhlBJ2WCFLT" version="17.4.5" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1440" dy="1056" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2263" dy="1660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -143,7 +143,14 @@
           <mxGeometry x="987" y="1120" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-69" target="0KAY6Pc1dU7HC7JTZcyY-73">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="1320" />
+              <mxPoint x="1330" y="1320" />
+              <mxPoint x="1330" y="790" />
+              <mxPoint x="1790" y="790" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-69" value="Print Offset Values, Forward Speed, and Turning Rate to Serial Monitor for debugging" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="740" y="1210" width="140" height="70" as="geometry" />
@@ -155,7 +162,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-73" value="Is Forward Speed 0?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="770" y="1355" width="80" height="80" as="geometry" />
+          <mxGeometry x="1750" y="845" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-75" target="0KAY6Pc1dU7HC7JTZcyY-79">
           <mxGeometry relative="1" as="geometry" />
@@ -163,12 +170,12 @@
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-75" target="0KAY6Pc1dU7HC7JTZcyY-98">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="970" y="1540" />
+              <mxPoint x="1950" y="1030" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-75" value="Set the Right Motor Power to the product of the Turning Rate and the stationary turning sensitivity constant" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="910" y="1350" width="120" height="90" as="geometry" />
+          <mxGeometry x="1890" y="840" width="120" height="90" as="geometry" />
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-84" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-77" target="0KAY6Pc1dU7HC7JTZcyY-83">
           <mxGeometry relative="1" as="geometry" />
@@ -176,47 +183,47 @@
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-77" target="0KAY6Pc1dU7HC7JTZcyY-98">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="650" y="1540" />
+              <mxPoint x="1630" y="1030" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-77" value="Set the Right Motor Power to the sum of the Forward Speed and the product of the Turning Rate and the turning sensitivity constant" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="590" y="1340" width="120" height="110" as="geometry" />
+          <mxGeometry x="1570" y="830" width="120" height="110" as="geometry" />
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-79" target="0KAY6Pc1dU7HC7JTZcyY-101">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1165" y="1680" />
+              <mxPoint x="2145" y="1170" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-79" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;Set the Left Motor Power to the product of the negative of the Turning Rate and the stationary turning sensitivity constant&lt;/span&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1100" y="1350" width="130" height="90" as="geometry" />
+          <mxGeometry x="2080" y="840" width="130" height="90" as="geometry" />
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-83" target="0KAY6Pc1dU7HC7JTZcyY-101">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="455" y="1680" />
+              <mxPoint x="1435" y="1170" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-83" value="Set the Left Motor Power to the sum of the Forward Speed and the product of the negative of the Turning Rate and the turning sensitivity constant" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="390" y="1340" width="130" height="110" as="geometry" />
+          <mxGeometry x="1370" y="830" width="130" height="110" as="geometry" />
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-98" value="&#xa;&#xa;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; background-color: rgb(248, 249, 250); display: inline; float: none;&quot;&gt;Set the right servo PWM value to its centerpoint minus the product of the Right Motor Power and the servo top speed constant&lt;/span&gt;&#xa;&#xa;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="700" y="1500" width="220" height="80" as="geometry" />
+          <mxGeometry x="1680" y="990" width="220" height="80" as="geometry" />
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-101" target="0KAY6Pc1dU7HC7JTZcyY-21">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="810" y="1740" />
-              <mxPoint x="1340" y="1740" />
-              <mxPoint x="1340" y="580" />
+              <mxPoint x="1790" y="1260" />
+              <mxPoint x="2250" y="1260" />
+              <mxPoint x="2250" y="580" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="0KAY6Pc1dU7HC7JTZcyY-101" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;Set the left servo PWM value to its centerpoint plus the product of the Left Motor Power and the servo top speed constant&lt;/span&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="700" y="1640" width="220" height="80" as="geometry" />
+          <mxGeometry x="1680" y="1130" width="220" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
