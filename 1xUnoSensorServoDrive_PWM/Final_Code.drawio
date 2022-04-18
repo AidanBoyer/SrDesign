@@ -1,1 +1,224 @@
-<mxfile host="app.diagrams.net" modified="2022-04-18T16:10:03.676Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" version="17.4.5" etag="r5WaynHyESZ9qWCdMN02" type="github"><diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">7VhZc9MwEP41Hp5gfBQnecRp0wKhU2ihw6NiK7aI7DWynINfzyqWYzsOOYD0yDQv0a43K2m/b4/YcPrx/FKQNPoEAeWGbQZzwzk3bNuybQe/lGZRaLq9bqEIBQu0UaW4Zb+oVppam7OAZg1DCcAlS5tKH5KE+rKhI0LArGk2Bt7cNSUhbSlufcLb2nsWyEjfwu5U+ivKwqjc2XJ7xZOYlMb6JllEApjVVM6F4fQFgCxW8bxPuQpeGZf794t7Ppy4lx8+Zz/JV+/j3fW314WzwSE/WV1B0ET+X9d24XpKeK7jpe8qF2UABeRJQJUT03C8SMYclxYuf1ApFxpwkktAFQgZQQgJ4UOAVNuNIZHazFIyTYJ3CliURxz8SaEaMM71Hihp+y5KmRQwWWGnHKyAUMacjCj3iD8JlwftAweBjxJIqHIVIBn0XarDXVRab8/YagwyyIVPt9jpbJFEhHSbP7ewU+er8VQjd0khplIs0EBQTiSbNslMdE6EK7sKd1xo6A+ggdOiwZDEqcp6oFnySuJqBmKyhRsKl1nEJL1NyTJAMywnTb7UeYBX9UJOskyjuAPkw0CaUiHpfGtYy6euzu2yuGlxVlUKq0z/qFYlzswjAXHWAuI7Fs+XlPyXlHT3TMmyY+3MSU2Wkhh7p6j2dAMskTUTGI8zPNg6dVYb/j2b3rbYdA0tMu3G41nT7ZHI1DmMS9aT55L7hxbhcgyDNxK4CtUq5XkYIlnQXWI4g3btiiAe5dnudtHAWDFoQGLGVbyuKJ9SyXyyoakQzkLc99xHuKnYTB7ckiUhSm4l3S3JivX3iM2m02w2K7nebcwN3aZ7rG7TaWF6g+gV0NkmX+J7Yh3fsddA6D12y+/uU6SfdQl+8I5fVtPdLd/as0xr9phvHPw0CPT0p4DeXjPlyxhwHIbZpzYIlCes8cnL+ag9CYxykSwHAcjlyySwbRKwNzWhB50EykJYA/ULTQlDMM3hKc4B6//8z5zHngPKStGEgKuY2maRYSeGwfos5ljHwwDF6k1tUQqr993OxW8=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-04-18T17:22:25.220Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="nZ4jkbC7iMmCj8WJ3n-q" version="17.4.5" type="github">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1440" dy="1056" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-18" target="0KAY6Pc1dU7HC7JTZcyY-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-18" value="Power On" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="350" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-19" target="0KAY6Pc1dU7HC7JTZcyY-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-19" value="Initialize Sensor&lt;br&gt;Initialize Servos&lt;br&gt;Set Zero Point" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="350" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-21" target="0KAY6Pc1dU7HC7JTZcyY-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-21" value="Poll Color&lt;br&gt;Sensor" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="350" y="550" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-23" target="0KAY6Pc1dU7HC7JTZcyY-27">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-23" target="0KAY6Pc1dU7HC7JTZcyY-49">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="720" />
+              <mxPoint x="1047" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-23" value="Calculate Color Offset Values" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="350" y="690" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-34" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-27" target="0KAY6Pc1dU7HC7JTZcyY-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-37" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-27" target="0KAY6Pc1dU7HC7JTZcyY-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-27" value="Red Offset outside Dead Zone?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="530" y="820" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-39" value="Positive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-33" target="0KAY6Pc1dU7HC7JTZcyY-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-41" value="Negative" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-33" target="0KAY6Pc1dU7HC7JTZcyY-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-33" value="Red Offset Sign?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="530" y="980" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-35" target="0KAY6Pc1dU7HC7JTZcyY-42">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="860" />
+              <mxPoint x="810" y="1165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-35" value="Set Forward Speed to 0" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="670" y="830" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-38" target="0KAY6Pc1dU7HC7JTZcyY-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-38" value="Set Forward Speed to reverse by the amount Red Offset exceeds the Dead Zone divided by the const Max Red Offset" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="670" y="970" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-40" target="0KAY6Pc1dU7HC7JTZcyY-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-40" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;Set Forward Speed to forward by the amount Red Offset exceeds the Dead Zone divided by the const Min Red Offset&lt;/span&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="350" y="970" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-42" target="0KAY6Pc1dU7HC7JTZcyY-69">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="1230" />
+              <mxPoint x="560" y="1230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-42" value="Clip Forward Speed between -1 and 1" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="510" y="1120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-52" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-49" target="0KAY6Pc1dU7HC7JTZcyY-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-56" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-49" target="0KAY6Pc1dU7HC7JTZcyY-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-49" value="Green-Blue offset outside Dead Zone?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1007" y="820" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-51" target="0KAY6Pc1dU7HC7JTZcyY-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-51" value="Set Turning Rate to 0" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1147" y="830" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-60" value="Negative" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-55" target="0KAY6Pc1dU7HC7JTZcyY-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-62" value="Positive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-55" target="0KAY6Pc1dU7HC7JTZcyY-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-55" value="Green-Blue Offset sign?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1007" y="980" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-59" target="0KAY6Pc1dU7HC7JTZcyY-64">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="887" y="1150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-59" value="Set Turning Rate to negative by the amount Green-Blue Offset exceeds the Dead Zone divided by the const Min Green-Blue Offset&amp;nbsp;" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="827" y="970" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-61" target="0KAY6Pc1dU7HC7JTZcyY-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-61" value="&#xa;&#xa;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; background-color: rgb(248, 249, 250); display: inline; float: none;&quot;&gt;Set Turning Rate to negative by the amount Green-Blue Offset exceeds the Dead Zone divided by the const Min Green-Blue Offset&amp;nbsp;&lt;/span&gt;&#xa;&#xa;" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1147" y="970" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-64" target="0KAY6Pc1dU7HC7JTZcyY-69">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1047" y="1245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-64" value="Clip Turning Rate between -1 and 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="987" y="1120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-69" target="0KAY6Pc1dU7HC7JTZcyY-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-69" value="Print Offset Values, Forward Speed, and Turning Rate to Serial Monitor for debugging" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="740" y="1210" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-76" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-73" target="0KAY6Pc1dU7HC7JTZcyY-75">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-78" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-73" target="0KAY6Pc1dU7HC7JTZcyY-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-73" value="Is Forward Speed 0?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="770" y="1355" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-75" target="0KAY6Pc1dU7HC7JTZcyY-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-75" target="0KAY6Pc1dU7HC7JTZcyY-98">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="970" y="1540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-75" value="Set the Right Motor Power to the product of the Turning Rate and the stationary turning sensitivity constant" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="910" y="1350" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-84" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-77" target="0KAY6Pc1dU7HC7JTZcyY-83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-77" target="0KAY6Pc1dU7HC7JTZcyY-98">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="1540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-77" value="Set the Right Motor Power to the sum of the Forward Speed and the product of the Turning Rate and the turning sensitivity constant" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="590" y="1340" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-79" target="0KAY6Pc1dU7HC7JTZcyY-101">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1165" y="1680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-79" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;Set the Left Motor Power to the product of the negative of the Turning Rate and the stationary turning sensitivity constant&lt;/span&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1100" y="1350" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-83" target="0KAY6Pc1dU7HC7JTZcyY-101">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="455" y="1680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-83" value="Set the Left Motor Power to the sum of the Forward Speed and the product of the negative of the Turning Rate and the turning sensitivity constant" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="390" y="1340" width="130" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-98" value="&#xa;&#xa;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; background-color: rgb(248, 249, 250); display: inline; float: none;&quot;&gt;Set the right servo PWM value to its centerpoint minus the product of the Right Motor Power and the servo top speed constant&lt;/span&gt;&#xa;&#xa;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="700" y="1500" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="0KAY6Pc1dU7HC7JTZcyY-101" target="0KAY6Pc1dU7HC7JTZcyY-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="1740" />
+              <mxPoint x="1340" y="1740" />
+              <mxPoint x="1340" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0KAY6Pc1dU7HC7JTZcyY-101" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;Set the left servo PWM value to its centerpoint plus the product of the Left Motor Power and the servo top speed constant&lt;/span&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="700" y="1640" width="220" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
